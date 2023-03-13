@@ -3,18 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();
 
-const users = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    age: 25,
-  },
-  {
-    firstName: "Jane",
-    lastName: "Doe",
-    age: 25,
-  },
-];
+const users = [];
 
 router.get("/", (req, res) => {
   res.send(users);
@@ -23,9 +12,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const user = req.body;
 
-  const userId = uuidv4();
-
-  const userWithId = { ...user, id: userId };
+  const userWithId = { ...user, id: uuidv4() };
 
   users.push(userWithId);
   // users.push()
